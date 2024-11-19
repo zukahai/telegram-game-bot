@@ -11,5 +11,7 @@ window.addEventListener('load', function() {
     if (chatId) {
         localStorage.setItem("telegram_chat_id", chatId);
         console.log('Chat ID from URL:', chatId);
+    } else {
+        console.log('No chat ID found in URL.');
     }
 });
