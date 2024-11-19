@@ -1,4 +1,3 @@
-import { getLatestChatId } from '../model/telegram.js';
 
 // Hàm lấy parameters từ URL
 function getUrlParameter(name) {
@@ -84,19 +83,6 @@ bao.onmouseover = function () {
 // Xử lý nút lấy Chat ID
 const getChatIdButton = document.getElementById("getChatId");
 const chatIdResult = document.getElementById("chatIdResult");
-
-getChatIdButton.onclick = async function() {
-    chatIdResult.textContent = "Đang lấy Chat ID...";
-    const chatId = await getLatestChatId();
-    if (chatId) {
-        chatIdResult.textContent = `Chat ID của bạn là: ${chatId}`;
-        // Lưu chat ID vào localStorage để sử dụng sau này
-        localStorage.setItem("telegram_chat_id", chatId);
-        updateTelegramStatus();
-    } else {
-        chatIdResult.textContent = "Không thể lấy Chat ID. Hãy đảm bảo bạn đã nhắn tin cho bot.";
-    }
-}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
