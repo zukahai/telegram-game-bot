@@ -133,7 +133,9 @@ class game {
                 .then(() => {
                     console.log('Score sent successfully.');
                     // Đóng cửa sổ sau khi gửi xong
-                    window.close();
+                    setTimeout(() => {
+                        window.close();
+                    }, 2000);
                 })
                 .catch(error => {
                     console.error('Error sending score:', error);

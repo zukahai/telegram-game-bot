@@ -217,16 +217,9 @@ class Board {
                         return telegram.sendGameOver(this.level + 1);
                     })
                     .then(() => {
-                        console.log("Game over notification sent successfully.");
-                        // Đặt lại cấp độ hiện tại
-                        this.resetCurrentLevel();
-            
-                        // Đóng cửa sổ
-                        if (window.opener) {
+                        setTimeout(() => {
                             window.close();
-                        } else {
-                            console.warn("Không thể đóng cửa sổ này vì nó không được mở bằng script.");
-                        }
+                        }, 2000);
                     })
                     .catch(error => {
                         console.error("Error sending game over notification:", error);

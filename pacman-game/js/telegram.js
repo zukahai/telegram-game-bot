@@ -40,6 +40,7 @@ export function sendScore(score, highScore) {
                 `🎯 Điểm số của bạn: ${score}\n` +
                 `Cảm ơn bạn đã trải nghiệm game!\n`;
     sendMessage(text);
+    return Promise.resolve();
 }
 
 // Gửi tin nhắn chào mừng
