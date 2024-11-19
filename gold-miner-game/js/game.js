@@ -213,23 +213,23 @@ class game {
         this.context.fillStyle = "red";
         if (this.score > tager)
             this.context.fillStyle = "#FF6600";
-        this.context.font = this.getWidth() + 'px Stencil';
+        this.context.font = this.getWidth() + 'px NVNPixelFJVerdana8pt';
         this.context.fillText(this.score, this.getWidth() * 1.5, this.getWidth() * 1.35);
 
-        this.context.drawImage(targetIM, this.getWidth() / 2, this.getWidth() / 2 + this.getWidth(), this.getWidth(), this.getWidth());
+        this.context.drawImage(targetIM, this.getWidth() / 2, this.getWidth() / 2 + 2 * this.getWidth(), this.getWidth(), this.getWidth());
         this.context.fillStyle = "#FF6600";
-        this.context.font = this.getWidth() + 'px Stencil';
-        this.context.fillText(tager, this.getWidth() * 1.5, this.getWidth() * 2.35);
+        this.context.font = this.getWidth() + 'px NVNPixelFJVerdana8pt';
+        this.context.fillText(tager, this.getWidth() * 1.5, this.getWidth() * 3.5);
 
         this.context.drawImage(levelIM, game_W - 3 * this.getWidth(), this.getWidth() / 2, this.getWidth(), this.getWidth());
         this.context.fillStyle = "#FFFFCC";
-        this.context.font = this.getWidth() + 'px Stencil';
+        this.context.font = this.getWidth() + 'px NVNPixelFJVerdana8pt';
         this.context.fillText(level + 1, game_W - 2 * this.getWidth(), this.getWidth() * 1.35);
 
-        this.context.drawImage(clockIM, game_W - 3 * this.getWidth(), this.getWidth() / 2 + this.getWidth(), this.getWidth(), this.getWidth());
+        this.context.drawImage(clockIM, game_W - 3 * this.getWidth(), this.getWidth() / 2 + 2 * this.getWidth(), this.getWidth(), this.getWidth());
         this.context.fillStyle = "#FF00FF";
-        this.context.font = this.getWidth() + 'px Stencil';
-        this.context.fillText(Math.floor(time), game_W - 2 * this.getWidth(), this.getWidth() * 2.35);
+        this.context.font = this.getWidth() + 'px NVNPixelFJVerdana8pt';
+        this.context.fillText(Math.floor(time), game_W - 2 * this.getWidth(), this.getWidth() * 3.5);
 
         if (Math.abs(timeH - time) <= 0.7) {
             this.context.fillStyle = "red";
