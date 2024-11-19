@@ -63,7 +63,7 @@ export async function sendMessage(message) {
 
 // Gửi điểm số
 export function sendScore(score) {
-    const text = `Cảm ơn bạn đã chơi trò chơi!\n${score}`;
+    const text = `Cảm ơn bạn đã chơi trò chơi kéo bua bao!\n${score}`;
     sendMessage(text);
 }
 
