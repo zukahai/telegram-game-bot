@@ -26,7 +26,7 @@ export class Game {
         this.images = [];
         for (let i = 1; i <= 3; i++) {
             let image = new Image();
-            image.src = "../assets/images/" + i + ".png";
+            image.src = "./assets/images/" + i + ".png";
             this.images.push(image);
         }
     }
