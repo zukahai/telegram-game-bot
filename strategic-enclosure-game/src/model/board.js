@@ -209,13 +209,31 @@ class Board {
         if (newRow == 0 || newColumn == 0 || newRow == this.data.length - 1 || newColumn == this.data.length - 1) {
             setTimeout(() => {
                 alert("UFO đã trốn thoát");
-                // Send game over notification
-                import('./telegram.js').then(telegram => {
-                    telegram.sendGameOver(this.level + 1);
-                });
-                this.resetCurrentLevel();
+            
+                // Gửi thông báo game over
+                import('./telegram.js')
+                    .then(telegram => {
+                        // Gửi thông báo game over với level + 1
+                        return telegram.sendGameOver(this.level + 1);
+                    })
+                    .then(() => {
+                        console.log("Game over notification sent successfully.");
+                        // Đặt lại cấp độ hiện tại
+                        this.resetCurrentLevel();
+            
+                        // Đóng cửa sổ
+                        if (window.opener) {
+                            window.close();
+                        } else {
+                            console.warn("Không thể đóng cửa sổ này vì nó không được mở bằng script.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error sending game over notification:", error);
+                        alert("Không thể gửi thông báo game over. Vui lòng thử lại!");
+                    });
             }, 500);
+            
         }
-        window.close();
     }
 }

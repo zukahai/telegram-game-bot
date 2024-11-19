@@ -120,16 +120,26 @@ class game {
         if (this.checkDie()) {
             die = true;
             console.log(Util.getItem("player-pacman"));
-            
+
             // Send score to Telegram
-            setTimeout(() => {
-                import('./telegram.js').then(telegram => {
-                    const highScore = this.player.getScore() > score ? this.player.getScore() : score;
-                    telegram.sendScore(score, highScore);
+            import('./telegram.js')
+                .then(telegram => {
+                    const currentScore = this.player.getScore();
+                    const highScore = currentScore > score ? currentScore : score;
+
+                    // Gửi điểm số và điểm cao nhất đến Telegram
+                    return telegram.sendScore(score, highScore);
+                })
+                .then(() => {
+                    console.log('Score sent successfully.');
+                    // Đóng cửa sổ sau khi gửi xong
+                    window.close();
+                })
+                .catch(error => {
+                    console.error('Error sending score:', error);
+                    alert('Không thể gửi điểm. Vui lòng thử lại!');
                 });
-            }, 1000);
-            
-            window.close();
+
         }
     }
 
