@@ -82,17 +82,27 @@ export class Game {
         }
 
         if (this.checkWin() != -1) {
-            let text = ["Bua", "Keo", "Bao"];
+            let text = ["Búa", "Kéo", "Bao"];
+            let icon = ["🥊", "✂️", "🧻"];
             let yourChoice = localStorage.getItem("choice");
             yourChoice = parseInt(yourChoice);
-            sendScore(`Lựa chọn của bạn là: ${text[yourChoice - 1]}\nKết quả của trò chơi: ${text[this.checkWin() - 1]}`);
-            alert("Your choice: " + text[yourChoice - 1] + "\nWin: " + text[this.checkWin() - 1]);
+        
+            let resultChoice = this.checkWin();
+            let resultText = `👉 Lựa chọn của bạn: ${icon[yourChoice - 1]} ${text[yourChoice - 1]}\n` +
+                             `🎯 Kết quả: ${icon[resultChoice - 1]} ${text[resultChoice - 1]}`;
+        
+            // Gửi thông báo về Telegram
+            sendScore(resultText);
+        
+            // Hiển thị kết quả và kết thúc trò chơi
+            alert(resultText);
             localStorage.setItem("start", false);
             this.running = false;
-            // tắt trò chơi trên trình duyệt
+        
+            // Tắt trò chơi trên trình duyệt
             window.close();
-            
         }
+        
 
         this.render();
     }

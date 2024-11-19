@@ -23,7 +23,7 @@ def generate_url(base_url, chat_id):
     query_params = {"chat_id": chat_id, "game_link": base_url}
     return f"{base_url}?{urlencode(query_params)}"
 
-async def start(update: Update, context: CallbackContext):
+async def game(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     keyboard = [
         [
@@ -37,7 +37,7 @@ async def start(update: Update, context: CallbackContext):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "✨ **Chào mừng bạn đến với Game Hub!**\n\n"
+        "✨ **Chào mừng bạn đến với HaiZuka BOT game**\n\n"
         "🎯 **Hãy chọn một trò chơi yêu thích để bắt đầu:**",
         reply_markup=reply_markup,
         parse_mode="Markdown"
@@ -45,7 +45,7 @@ async def start(update: Update, context: CallbackContext):
 
 async def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("start", game))
     print("Bot is running...")
     await app.run_polling()
 
