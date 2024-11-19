@@ -127,7 +127,6 @@ class game {
                 telegram.sendScore(score, highScore);
             });
             
-            alert("Số điểm của bạn là " + score + "\nĐiểm cao nhất của bạn là: " + (this.player.getScore() > score ? this.player.getScore() : score));
             window.close();
         }
     }
