@@ -4,20 +4,21 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, CallbackContext
 import nest_asyncio
 from urllib.parse import urlencode
-from flask import Flask, request, jsonify
-from threading import Thread
 
 nest_asyncio.apply()
-app = Flask(__name__)
 
 BOT_TOKEN = "7901264656:AAH7NSnn_K1S9HDwmlZvK3ohEGvWtMqkJyg"
-bot = None  # Global bot instance
 
 games = [
     {
         "name": "⍩⃝    Pacman", 
         "url": "https://tele-game-haizuka.vercel.app/pacman-game/",
         "image": "https://imgur.com/a/FjWeqg1"
+    },
+    {
+        "name": "🗼 Tháp Hà Nội", 
+        "url": "https://tele-game-haizuka.vercel.app/hanoi-tower-game/",
+        "image": "https://imgur.com/ykCSktS"
     },
     {
         "name": "🛸 Vây bắt chiến thuật", 
@@ -27,13 +28,8 @@ games = [
     {
         "name": "🥊 Kéo búa bao", 
         "url": "https://tele-game-haizuka.vercel.app/time-killing-games/",
-        "image": "https://imgur.com/VjuLk0B"
-    },
-    {
-        "name": "🗼 Tháp Hà Nội", 
-        "url": "https://tele-game-haizuka.vercel.app/hanoi-towers-game/",
-        "image": "https://imgur.com/VjuLk0B"
-    },
+        "image": "https://i.imgur.com"
+    }
 ]
 
 def generate_url(base_url, chat_id):
@@ -101,50 +97,11 @@ async def button_click(update: Update, context: CallbackContext):
                     f"🔗 [Bắt đầu chơi]({game_url})",
             parse_mode="Markdown"
         )
-
-async def send_game_result(chat_id: str, game_name: str, score: str):
-    """Gửi kết quả game qua Telegram"""
-    if bot:
-        message = f"🎮 *{game_name}*\n📊 Kết quả: {score}"
-        async with bot:
-            await bot.send_message(chat_id=chat_id, text=message, parse_mode="Markdown")
-
-@app.route('/send-result', methods=['POST'])
-def handle_result():
-    """API endpoint để nhận kết quả game"""
-    try:
-        data = request.json
-        chat_id = data.get('chat_id')
-        game_name = data.get('game_name')
-        score = data.get('score')
-
-        if not all([chat_id, game_name, score]):
-            return jsonify({"error": "Missing required fields"}), 400
-
-        # Gửi kết quả qua Telegram
-        asyncio.run(send_game_result(chat_id, game_name, score))
-        return jsonify({"status": "success"}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-def run_flask():
-    """Chạy Flask server trong thread riêng"""
-    app.run(host='0.0.0.0', port=5000)
-
 async def main():
-    global bot
     app = ApplicationBuilder().token(BOT_TOKEN).build()
-    bot = app.bot  # Lưu bot instance để sử dụng trong Flask
-    
     app.add_handler(CommandHandler("start", game))
     app.add_handler(CallbackQueryHandler(view_info, pattern="^view_info$"))
-    app.add_handler(CallbackQueryHandler(button_click, pattern="^game_"))
-    
-    # Chạy Flask server trong thread riêng
-    flask_thread = Thread(target=run_flask)
-    flask_thread.daemon = True
-    flask_thread.start()
-    
+    app.add_handler(CallbackQueryHandler(button_click, pattern="^game_"))  # Thêm handler mới
     print("Bot is running...")
     await app.run_polling()
 
