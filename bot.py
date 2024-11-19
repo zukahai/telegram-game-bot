@@ -16,9 +16,9 @@ games = [
         "image": "https://imgur.com/a/FjWeqg1"
     },
     {
-        "name": "🗼 Tháp Hà Nội", 
-        "url": "https://tele-game-haizuka.vercel.app/hanoi-towers-game/",
-        "image": "https://imgur.com/ykCSktS"
+        "name": "💰 Đào vàng", 
+        "url": "https://tele-game-haizuka.vercel.app/gold-miner-game/",
+        "image": "https://imgur.com/gBnmvh3"
     },
     {
         "name": "🛸 Vây bắt chiến thuật", 
@@ -26,9 +26,9 @@ games = [
         "image": "https://imgur.com/VjuLk0B"
     },
     {
-        "name": "💰 Đào vàng", 
-        "url": "https://tele-game-haizuka.vercel.app/gold-miner-game/",
-        "image": "https://imgur.com/gBnmvh3"
+        "name": "🗼 Tháp Hà Nội", 
+        "url": "https://tele-game-haizuka.vercel.app/hanoi-towers-game/",
+        "image": "https://imgur.com/ykCSktS"
     },
     {
         "name": "🥊 Kéo búa bao", 
