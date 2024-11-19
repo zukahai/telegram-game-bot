@@ -12,9 +12,10 @@ with open("config.json", "r") as config_file:
     config = json.load(config_file)
     BOT_TOKEN = config["BOT_TOKEN"]
 
+
 games = [
-    {"name": "🎮 Kéo búa bao", "url": "https://tele-game-haizuka.vercel.app/time-killing-games/index.html"},
-    {"name": "🕹️ Game 2", "url": "https://game2.example.com"},
+    {"name": "⍩⃝ Pacman", "url": "https://tele-game-haizuka.vercel.app/pacman-game/"},
+    {"name": "🥊 Kéo búa bao", "url": "https://tele-game-haizuka.vercel.app/time-killing-games/"},
     {"name": "🏆 Game 3", "url": "https://game3.example.com"},
     {"name": "🎲 Game 4", "url": "https://game4.example.com"},
 ]
