@@ -44,7 +44,7 @@ export function sendLevelComplete(level) {
 
 // Gửi thông báo khi thua
 export function sendGameOver(level) {
-    let congrat = "Chúc mừng bạn đã hoàn thành màn chơi level " + level;
+    let congrat = "Chúc mừng bạn đã hoàn thành màn chơi level " + (level - 1) + "!\n";
     if (level == 1)
         congrat = "";
     const text = `🎮 Strategic Enclosure Game\n` +
