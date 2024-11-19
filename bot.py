@@ -17,13 +17,18 @@ games = [
     },
     {
         "name": "🗼 Tháp Hà Nội", 
-        "url": "https://tele-game-haizuka.vercel.app/hanoi-tower-game/",
+        "url": "https://tele-game-haizuka.vercel.app/hanoi-towers-game/",
         "image": "https://imgur.com/ykCSktS"
     },
     {
         "name": "🛸 Vây bắt chiến thuật", 
         "url": "https://tele-game-haizuka.vercel.app/strategic-enclosure-game/",
         "image": "https://imgur.com/VjuLk0B"
+    },
+    {
+        "name": "💰 Đào vàng", 
+        "url": "https://tele-game-haizuka.vercel.app/gold-miner-game/",
+        "image": "https://imgur.com/gBnmvh3"
     },
     {
         "name": "🥊 Kéo búa bao", 
@@ -47,6 +52,9 @@ async def game(update: Update, context: CallbackContext):
         [
             InlineKeyboardButton(games[2]["name"], callback_data=f"game_2"), 
             InlineKeyboardButton(games[3]["name"], callback_data=f"game_3"),
+        ],
+        [
+            InlineKeyboardButton(games[4]["name"], callback_data=f"game_4"), 
         ],
         [
             InlineKeyboardButton("📋 Xem thông tin của tôi", callback_data="view_info")
