@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <title>Time Killing games | HaiZuka</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/modal.css">
+  </head>
+  <body>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1> Cuộc chiến kéo búa bao</h1>
+        <img id="choice" src="./assets/images/1.png" alt srcset>
+        <h2>Luật chơi</h2>
+        <p>
+          3 đội quân kéo búa bao đang loạn chiến, hãy dự đoán đội nào sẽ thắng.
+        </p>
+        <input type="button" id="keo" value="Kéo">
+        <input type="button" id="bua" value="Búa">
+        <input type="button" id="bao" value="Bao">
+        <div style="margin-top: 20px;">
+          <p>Trạng thái Telegram:</p>
+          <p id="chatIdStatus" style="color: green;"></p>
+        </div>
+      </div>
+    </div>
+    <script src="./src/utils/modal.js" type="module"></script>
+    <script src="./src/model/item.js" type="module"></script>
+    <script src="./src/model/game.js" type="module"></script>
+  </body>
+</html>
