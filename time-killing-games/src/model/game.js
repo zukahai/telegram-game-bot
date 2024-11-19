@@ -85,11 +85,13 @@ export class Game {
             let text = ["Bua", "Keo", "Bao"];
             let yourChoice = localStorage.getItem("choice");
             yourChoice = parseInt(yourChoice);
+            sendScore(`Lựa chọn của bạn là: ${text[yourChoice - 1]}\nKết quả của trò chơi: ${text[this.checkWin() - 1]}`);
             alert("Your choice: " + text[yourChoice - 1] + "\nWin: " + text[this.checkWin() - 1]);
-            // Send both the player's choice and the winning result
-            sendScore(`Lựa chọn: ${text[yourChoice - 1]}, Kết quả: ${text[this.checkWin() - 1]}`);
             localStorage.setItem("start", false);
             this.running = false;
+            // tắt trò chơi trên trình duyệt
+            window.close();
+            
         }
 
         this.render();
