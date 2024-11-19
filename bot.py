@@ -14,7 +14,7 @@ with open("config.json", "r") as config_file:
 
 
 games = [
-    {"name": "⍩⃝ Pacman", "url": "https://tele-game-haizuka.vercel.app/pacman-game/"},
+    {"name": "⍩⃝    Pacman", "url": "https://tele-game-haizuka.vercel.app/pacman-game/"},
     {"name": "🥊 Kéo búa bao", "url": "https://tele-game-haizuka.vercel.app/time-killing-games/"},
     {"name": "🏆 Game 3", "url": "https://game3.example.com"},
     {"name": "🎲 Game 4", "url": "https://game4.example.com"},
