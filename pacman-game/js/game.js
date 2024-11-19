@@ -122,10 +122,12 @@ class game {
             console.log(Util.getItem("player-pacman"));
             
             // Send score to Telegram
-            import('./telegram.js').then(telegram => {
-                const highScore = this.player.getScore() > score ? this.player.getScore() : score;
-                telegram.sendScore(score, highScore);
-            });
+            setTimeout(() => {
+                import('./telegram.js').then(telegram => {
+                    const highScore = this.player.getScore() > score ? this.player.getScore() : score;
+                    telegram.sendScore(score, highScore);
+                });
+            }, 1000);
             
             window.close();
         }

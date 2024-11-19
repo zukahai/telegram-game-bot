@@ -216,5 +216,6 @@ class Board {
                 this.resetCurrentLevel();
             }, 500);
         }
+        window.close();
     }
 }
